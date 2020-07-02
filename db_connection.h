@@ -10,6 +10,7 @@ class db_connection
 {
 public:
     db_connection();
+    db_connection(QString hostname, QString dbname, QString username,  QString password);
     QString server; //server a cui connettersi
     QString userid; //nome utente
     QString password; //password
