@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>new_macro</class>
+ <widget class="QDialog" name="new_macro">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>AWM - Wkout Editor</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>1261</width>
+     <height>781</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="LYT_newMacroMain">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="LYT_macro">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>MacroCiclo</string>
+      </property>
+      <widget class="QDateEdit" name="DATE_macroStart">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>90</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="DATE_macroEnd">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>90</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LBL_macroStart">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>70</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>INIZIO</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LBL_macroend">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>70</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>FINE</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="LIST_macroList">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>130</y>
+         <width>351</width>
+         <height>621</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="COMBO_athlete">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>121</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="GRP_meso">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>130</y>
+         <width>411</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>MesoCiclo</string>
+       </property>
+       <widget class="QDateEdit" name="DATE_mesoStart">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>40</y>
+          <width>110</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LBL_mesoStart">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>51</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>INIZIO</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="COMBO_mesoType">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>80</y>
+          <width>121</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LBL_mesoDuration">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>DURATA</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="SPIN_mesoDuration">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>40</y>
+          <width>42</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="TXT_mesoName">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>70</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LBL_mesoName">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>70</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NOME</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BTN_mesoAdd">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>120</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Aggiungi MesoCiclo</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="GRP_archer">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>10</y>
+         <width>421</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Arciere</string>
+       </property>
+       <widget class="QLabel" name="LBL_archerDiv">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>91</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Divisione</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LBL_archerCat">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Categoria</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LBL_archerPic">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>10</y>
+          <width>201</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>48</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="text">
+         <string>FOTO</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
