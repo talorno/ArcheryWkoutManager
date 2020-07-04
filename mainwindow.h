@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    db_connection dbCon;
 
 private slots:
     void on_BTN_wkoutManager_clicked();

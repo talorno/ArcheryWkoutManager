@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->LBL_numAthletes->setText(QString::number(getNumAthletes()));
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
-    db_connection* db = new db_connection();
+    db_connection* dbCon = new db_connection();
 
 }
 
@@ -60,12 +60,16 @@ void MainWindow::on_actionAbout_triggered()
 qint8 MainWindow::getNumAthletes()
 {
 //ritorna numero atleti da db
-       QSqlQuery query;
+
+    QSqlQuery query;
        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-       //query.first();
+       query.first();
        return query.value(0).toInt();
        //return 0;
-    }
+
+//return 69;
+
+}
 
 qint8 MainWindow::getNumWkouts()
 {
