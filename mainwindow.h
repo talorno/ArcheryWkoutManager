@@ -6,6 +6,8 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QDebug>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,7 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    db_connection dbCon;
+    //db_connection dbCon;
 
 private slots:
     void on_BTN_wkoutManager_clicked();

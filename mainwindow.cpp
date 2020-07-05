@@ -5,6 +5,7 @@
 #include "list_athletes.h"
 #include "list_exercises.h"
 #include "db_connection.h"
+#include "QSqlDatabase"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->LBL_numAthletes->setText(QString::number(getNumAthletes()));
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
-    db_connection* dbCon = new db_connection();
+    //db_connection* db = new db_connection();
 
 }
 
@@ -62,6 +63,9 @@ qint8 MainWindow::getNumAthletes()
 //ritorna numero atleti da db
 
     QSqlQuery query;
+    QSqlDatabase db = QSqlDatabase::database();
+    if(db.isOpen()) qDebug() << "Date:";
+
        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
        query.first();
        return query.value(0).toInt();

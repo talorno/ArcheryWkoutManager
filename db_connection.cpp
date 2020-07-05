@@ -3,7 +3,7 @@
 
 db_connection::db_connection(QString hostname, QString dbname, QString username,  QString password){
 
-QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setHostName(hostname);
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");
@@ -13,7 +13,7 @@ QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
 db_connection::db_connection(){
 
-QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setHostName("localhost");
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");
