@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->LBL_numAthletes->setText(QString::number(getNumAthletes()));
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
-    //db_connection* db = new db_connection();
+    db_connection* db = new db_connection();
 
 }
 

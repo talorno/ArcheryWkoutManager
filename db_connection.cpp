@@ -8,7 +8,7 @@ QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");
     dbCon.setPassword("archery");
-    dbConState = dbCon.open();
+    //dbConState = dbCon.open();
     }
 
 db_connection::db_connection(){

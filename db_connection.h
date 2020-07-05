@@ -16,7 +16,7 @@ public:
     QString password; //password
     QString port; //porta dove il server SQL è in ascolto
     QString dbName; //Nome del database da utilizzare
-    QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
+    //QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
 
 private:
    bool dbConState = false;
