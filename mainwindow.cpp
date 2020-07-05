@@ -63,8 +63,8 @@ qint8 MainWindow::getNumAthletes()
 //ritorna numero atleti da db
 
     QSqlQuery query;
-    QSqlDatabase db = QSqlDatabase::database();
-    if(db.isOpen()) qDebug() << "Date:";
+    QSqlDatabase dbase = QSqlDatabase::database();
+    if(dbase.isOpen()) qDebug() << "Date:";
 
        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
        query.first();
