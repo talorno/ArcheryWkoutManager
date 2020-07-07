@@ -64,11 +64,26 @@ qint8 MainWindow::getNumAthletes()
 
     QSqlQuery query;
     QSqlDatabase dbase = QSqlDatabase::database();
-    if(dbase.isOpen()) qDebug() << "Date:";
 
-       query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-       query.first();
-       return query.value(0).toInt();
+    if(dbase.isOpen()){
+        qDebug()<<"Database opened!MAINWIND";
+        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+        query.first();
+        return query.value(0).toInt();
+    }
+
+
+
+
+    else{
+        qDebug() << dbase.lastError().text();
+        qDebug() << "ERROR";
+        return 69;
+    }
+
+       //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+       //query.first();
+       //return query.value(0).toInt();
        //return 0;
 
 //return 69;

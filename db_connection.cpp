@@ -1,5 +1,6 @@
 #include "db_connection.h"
-
+#include <QtDebug>
+#include <QSqlError>
 
 db_connection::db_connection(QString hostname, QString dbname, QString username,  QString password){
 
@@ -13,10 +14,18 @@ QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
 
 db_connection::db_connection(){
 
-QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
+    QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setHostName("localhost");
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");
     dbCon.setPassword("archery");
-    dbConState = dbCon.open();
-    }
+
+    if(dbCon.open()){qDebug()<<"Database opened!";}
+    else{qDebug() << dbCon.lastError().text();}
+
+}
+
+db_connection::~db_connection(){
+    if (dbCon.isOpen())
+        dbCon.close();
+}

@@ -11,15 +11,16 @@ class db_connection
 public:
     db_connection();
     db_connection(QString hostname, QString dbname, QString username,  QString password);
+    ~db_connection();
     QString server; //server a cui connettersi
     QString userid; //nome utente
     QString password; //password
-    QString port; //porta dove il server SQL è in ascolto
+    QString port; //porta dove il ser   ver SQL è in ascolto
     QString dbName; //Nome del database da utilizzare
-    //QSqlDatabase dbCon = QSqlDatabase::addDatabase("QMYSQL");
+    QSqlDatabase dbCon;
 
 private:
-   bool dbConState = false;
+
 
 };
 
