@@ -20,7 +20,7 @@ db_connection::db_connection(){
     dbCon.setUserName("archery_manager");
     dbCon.setPassword("archery");
 
-    if(dbCon.open()){qDebug()<<"Database opened!";}
+    if(dbCon.open()){qDebug()<<"Database opened! - FROM DBCONNECTION CLASS";}
     else{qDebug() << dbCon.lastError().text();}
 
 }

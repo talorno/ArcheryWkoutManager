@@ -73,10 +73,8 @@ qint8 MainWindow::getNumAthletes()
     }
 
 
-
-
     else{
-        qDebug() << dbase.lastError().text();
+        qDebug() << dbase.lastError().text()<<"ELSE";
         qDebug() << "ERROR";
         return 69;
     }
