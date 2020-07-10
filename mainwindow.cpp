@@ -64,7 +64,6 @@ qint8 MainWindow::getNumAthletes()
 
     QSqlQuery query;
     QSqlDatabase dbase = QSqlDatabase::database();
-
     if(dbase.isOpen()){
         qDebug()<<"Database opened!MAINWIND";
         query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
