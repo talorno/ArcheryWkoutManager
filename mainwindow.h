@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <db_connection.h>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -20,7 +19,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    db_connection* db ;
+    //db_connection* db ;
+    QSqlDatabase dbCon;
+    //QSqlDatabase dbase;
 
 
 private slots:
@@ -39,5 +40,8 @@ private:
     qint8 getNumAthletes();
     qint8 getNumWkouts();
     qint8 getNumExercises();
+    int connectDb();
+
+
 };
 #endif // MAINWINDOW_H

@@ -4,8 +4,8 @@
 #include "workout_manager.h"
 #include "list_athletes.h"
 #include "list_exercises.h"
-#include "db_connection.h"
 #include "QSqlDatabase"
+#include "QSqlQuery"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->LBL_numAthletes->setText(QString::number(getNumAthletes()));
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
-    db_connection* db = new db_connection();
+    connectDb();
 
 }
 
@@ -30,6 +30,22 @@ void MainWindow::on_BTN_wkoutManager_clicked()
     workout_manager wkout_manager;
     wkout_manager.setModal(true);
     wkout_manager.exec();
+}
+
+
+int MainWindow::connectDb(){
+    dbCon = QSqlDatabase::addDatabase("QMYSQL");
+    dbCon.setHostName("localhost");
+    dbCon.setDatabaseName("TrainingPlanV2");
+    dbCon.setUserName("archery_manager");
+    dbCon.setPassword("archery");
+
+
+    if(dbCon.open()){
+        qDebug()<<"Database opened! - FROM main CLASS";
+              return 1;
+    }
+    else return -1;
 }
 
 void MainWindow::on_BTN_athlManager_clicked()
@@ -62,28 +78,28 @@ qint8 MainWindow::getNumAthletes()
 {
 //ritorna numero atleti da db
 
-    QSqlQuery query;
-    QSqlDatabase dbase = QSqlDatabase::database();
-    if(dbase.isOpen()){
-        qDebug()<<"Database opened!MAINWIND";
-        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-        query.first();
-        return query.value(0).toInt();
-    }
+    //dbase = QSqlDatabase::database();
+    qDebug() << QSqlDatabase::database();
+
+    //QSqlQuery  query(dbCon);
+    //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+
+//    if(dbase.isOpen()){
+//        qDebug()<<"Database opened!MAINWIND";
+//        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+//        query.first();
+//        qDebug()<<query.value(0).toInt();
+//        return query.value(0).toInt();
+//        return 1;
+//    }
 
 
-    else{
-        qDebug() << dbase.lastError().text()<<"ELSE";
-        qDebug() << "ERROR";
-        return 69;
-    }
+//    else{
+//        qDebug() << dbCon.lastError().text()<<"ELSE";
+//        qDebug() << "ERROR";
+//        return 69;
+//    }
 
-       //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-       //query.first();
-       //return query.value(0).toInt();
-       //return 0;
-
-//return 69;
 
 }
 

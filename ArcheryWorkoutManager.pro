@@ -17,7 +17,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     about.cpp \
-    db_connection.cpp \
     editor_athlete.cpp \
     editor_exercise.cpp \
     editor_meso.cpp \
@@ -32,7 +31,6 @@ SOURCES += \
 
 HEADERS += \
     about.h \
-    db_connection.h \
     editor_athlete.h \
     editor_exercise.h \
     editor_meso.h \
