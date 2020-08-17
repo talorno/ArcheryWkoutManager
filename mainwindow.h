@@ -19,9 +19,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    //db_connection* db ;
+
     QSqlDatabase dbCon;
-    //QSqlDatabase dbase;
 
 
 private slots:
@@ -40,7 +39,7 @@ private:
     qint8 getNumAthletes();
     qint8 getNumWkouts();
     qint8 getNumExercises();
-    int connectDb();
+    QSqlDatabase connectDb();
 
 
 };

@@ -6,6 +6,8 @@
 #include "list_exercises.h"
 #include "QSqlDatabase"
 #include "QSqlQuery"
+#include "QtSql"
+#include "QSqlError"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -32,8 +34,7 @@ void MainWindow::on_BTN_wkoutManager_clicked()
     wkout_manager.exec();
 }
 
-
-int MainWindow::connectDb(){
+QSqlDatabase MainWindow::connectDb(){
     dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setHostName("localhost");
     dbCon.setDatabaseName("TrainingPlanV2");
@@ -43,9 +44,12 @@ int MainWindow::connectDb(){
 
     if(dbCon.open()){
         qDebug()<<"Database opened! - FROM main CLASS";
-              return 1;
+        return dbCon;
     }
-    else return -1;
+    else{
+        qDebug()<<"DB opening ERROR";
+    }
+return dbCon;
 }
 
 void MainWindow::on_BTN_athlManager_clicked()
@@ -78,29 +82,14 @@ qint8 MainWindow::getNumAthletes()
 {
 //ritorna numero atleti da db
 
-    //dbase = QSqlDatabase::database();
-    qDebug() << QSqlDatabase::database();
-
-    //QSqlQuery  query(dbCon);
     //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+    QSqlDatabase DB = QSqlDatabase::database();
 
-//    if(dbase.isOpen()){
-//        qDebug()<<"Database opened!MAINWIND";
-//        query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-//        query.first();
-//        qDebug()<<query.value(0).toInt();
-//        return query.value(0).toInt();
-//        return 1;
-//    }
+    if(DB.isOpenError()){
+       DB.lastError();
+    }
 
-
-//    else{
-//        qDebug() << dbCon.lastError().text()<<"ELSE";
-//        qDebug() << "ERROR";
-//        return 69;
-//    }
-
-
+return 112;
 }
 
 qint8 MainWindow::getNumWkouts()
