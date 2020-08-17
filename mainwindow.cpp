@@ -8,16 +8,18 @@
 #include "QSqlQuery"
 #include "QtSql"
 #include "QSqlError"
+#include "QTimer"
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connectDb();
     ui->LBL_numAthletes->setText(QString::number(getNumAthletes()));
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
-    connectDb();
+
 
 }
 
@@ -34,8 +36,8 @@ void MainWindow::on_BTN_wkoutManager_clicked()
     wkout_manager.exec();
 }
 
-QSqlDatabase MainWindow::connectDb(){
-    dbCon = QSqlDatabase::addDatabase("QMYSQL");
+void MainWindow::connectDb(){
+    dbCon = QSqlDatabase::addDatabase("QMARIADB");
     dbCon.setHostName("localhost");
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");
@@ -44,12 +46,10 @@ QSqlDatabase MainWindow::connectDb(){
 
     if(dbCon.open()){
         qDebug()<<"Database opened! - FROM main CLASS";
-        return dbCon;
     }
     else{
         qDebug()<<"DB opening ERROR";
     }
-return dbCon;
 }
 
 void MainWindow::on_BTN_athlManager_clicked()
@@ -82,25 +82,52 @@ qint8 MainWindow::getNumAthletes()
 {
 //ritorna numero atleti da db
 
-    //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
     QSqlDatabase DB = QSqlDatabase::database();
+    QSqlQuery query;
+    query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+    query.next();
+    qint8 count = query.value(0).toInt();
+    qDebug() << count;
 
     if(DB.isOpenError()){
        DB.lastError();
     }
 
-return 112;
+return count;
 }
 
 qint8 MainWindow::getNumWkouts()
 {
 //ritorna numero piani da db
     //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
-    return 69;
+    QSqlDatabase DB = QSqlDatabase::database();
+    QSqlQuery query;
+    query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+    query.next();
+    qint8 count = query.value(0).toInt();
+    qDebug() << count;
+
+    if(DB.isOpenError()){
+       DB.lastError();
+    }
+
+return count;
 }
 
 qint8 MainWindow::getNumExercises()
 {
 //ritorna numero esercizi da db
-    return 69;
+
+            QSqlDatabase DB = QSqlDatabase::database();
+            QSqlQuery query;
+            query.exec("SELECT COUNT(*) FROM`dbo.T_Sys_Exercises`");
+            query.next();
+            qint8 count = query.value(0).toInt();
+            qDebug() << count;
+
+            if(DB.isOpenError()){
+               DB.lastError();
+            }
+
+        return count;
 }

@@ -39,8 +39,7 @@ private:
     qint8 getNumAthletes();
     qint8 getNumWkouts();
     qint8 getNumExercises();
-    QSqlDatabase connectDb();
-
+    void connectDb();
 
 };
 #endif // MAINWINDOW_H
