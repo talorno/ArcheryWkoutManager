@@ -87,7 +87,7 @@ qint8 MainWindow::getNumAthletes()
     query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
     query.next();
     qint8 count = query.value(0).toInt();
-    qDebug() << count;
+
 
     if(DB.isOpenError()){
        DB.lastError();
@@ -105,7 +105,7 @@ qint8 MainWindow::getNumWkouts()
     query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
     query.next();
     qint8 count = query.value(0).toInt();
-    qDebug() << count;
+
 
     if(DB.isOpenError()){
        DB.lastError();
@@ -123,7 +123,6 @@ qint8 MainWindow::getNumExercises()
             query.exec("SELECT COUNT(*) FROM`dbo.T_Sys_Exercises`");
             query.next();
             qint8 count = query.value(0).toInt();
-            qDebug() << count;
 
             if(DB.isOpenError()){
                DB.lastError();

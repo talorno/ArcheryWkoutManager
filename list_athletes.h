@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QSqlQuery>
+#include <QSqlTableModel>
+#include <QTableView>
 
 
 namespace Ui {
@@ -19,9 +21,10 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void initializeModel(QSqlTableModel *model);
 
 private:
-    Ui::list_athletes *ui;
+    Ui::list_athletes *athletesUi;
     QSqlQuery getAthletesList();
 
 };

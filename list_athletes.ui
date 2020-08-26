@@ -33,52 +33,9 @@
      <height>781</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="LYT_listAthlete">
     <item row="0" column="0">
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="title">
-       <string>GroupBox</string>
-      </property>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>560</x>
-         <y>10</y>
-         <width>141</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;LISTA ATLETI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="geometry">
-        <rect>
-         <x>-10</x>
-         <y>380</y>
-         <width>1259</width>
-         <height>386</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>GroupBox</string>
-       </property>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>1070</x>
-          <y>320</y>
-          <width>121</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Nuovo Atleta</string>
-        </property>
-       </widget>
-      </widget>
-     </widget>
+     <widget class="QTableView" name="TBL_athletesList"/>
     </item>
    </layout>
   </widget>

@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::list_exercises *ui;
+    void populateTable();
 };
 
 #endif // LIST_EXERCISES_H
