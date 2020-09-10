@@ -19,9 +19,9 @@ public:
 
 private slots:
     void on_BTN_addEx_clicked();
-    void ui_PopulateComboExCat(QString cat);
+    void ui_PopulateComboExCat();
     void ui_PopulateComboExSubCat(QString subCat);
-    void ui_PopulateExTable();
+    void ui_PopulateExTable(QString cat, QString subCat);
     void on_COMBO_exCat_currentIndexChanged(const QString &arg1);
     void on_COMBO_exSubCat_currentIndexChanged(const QString &arg1);
 
