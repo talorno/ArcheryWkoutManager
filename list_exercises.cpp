@@ -22,7 +22,8 @@ void list_exercises::ui_PopulateExTable(QString cat, QString subCat){
         exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
     }
     else if(cat.isEmpty() == false){
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE exerciseType = ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
+
+        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE exerciseTypeDescr = " +cat+ " ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
     }
     exercisesModel->setHeaderData(0, Qt::Horizontal, tr("Tipo Esercizio"));
     exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Descrizione"));
@@ -78,6 +79,7 @@ void list_exercises::on_COMBO_exCat_currentIndexChanged(const QString &arg1)
 {
 
     qDebug()<< exercisesUi->COMBO_exCat->currentText();
+    ui_PopulateExTable(exercisesUi->COMBO_exCat->currentText(),NULL);
 
 }
 
