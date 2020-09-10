@@ -9,8 +9,8 @@ list_exercises::list_exercises(QWidget *parent) :
 {
     exercisesUi->setupUi(this);
     ui_PopulateComboExCat();
-    ui_PopulateComboExSubCat(NULL);
     ui_PopulateExTable(NULL,NULL);
+    exercisesUi->COMBO_exSubCat->setEnabled(false);
 
 
 }
@@ -23,8 +23,10 @@ void list_exercises::ui_PopulateExTable(QString cat, QString subCat){
     }
     else if(cat.isEmpty() == false){
 
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE exerciseTypeDescr = " +cat+ " ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
+        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE exerciseTypeDescr = '" +cat+ "' ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
+        ui_PopulateComboExSubCat(cat);
     }
+
     exercisesModel->setHeaderData(0, Qt::Horizontal, tr("Tipo Esercizio"));
     exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Descrizione"));
     exercisesModel->setHeaderData(2, Qt::Horizontal, tr("Unità"));
@@ -64,13 +66,14 @@ void list_exercises::ui_PopulateComboExCat(){
 }
 
 
-void list_exercises::ui_PopulateComboExSubCat(QString subCat){
+void list_exercises::ui_PopulateComboExSubCat(QString Cat){
 
     QSqlQueryModel *ComboExSubCatModel = new QSqlQueryModel;
     ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescription FROM TrainingPlanV2.T_sys_ExerciseSubType;");
     exercisesUi->COMBO_exSubCat->setModel(ComboExSubCatModel);
     int subCatWidth = exercisesUi->COMBO_exSubCat->minimumSizeHint().width();
     exercisesUi->COMBO_exSubCat->setMinimumWidth(subCatWidth);
+    exercisesUi->COMBO_exSubCat->setEnabled(true);
 
 }
 
