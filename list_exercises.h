@@ -2,6 +2,8 @@
 #define LIST_EXERCISES_H
 
 #include <QDialog>
+#include <QSqlQueryModel>
+#include <QTableView>
 
 namespace Ui {
 class list_exercises;
@@ -17,10 +19,16 @@ public:
 
 private slots:
     void on_BTN_addEx_clicked();
+    void ui_PopulateComboExCat(QString cat);
+    void ui_PopulateComboExSubCat(QString subCat);
+    void ui_PopulateExTable();
+    void on_COMBO_exCat_currentIndexChanged(const QString &arg1);
+    void on_COMBO_exSubCat_currentIndexChanged(const QString &arg1);
+
+
 
 private:
-    Ui::list_exercises *ui;
-    void populateTable();
+    Ui::list_exercises *exercisesUi;
 };
 
 #endif // LIST_EXERCISES_H

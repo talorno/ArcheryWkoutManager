@@ -8,20 +8,23 @@ list_athletes::list_athletes(QWidget *parent) :
     athletesUi(new Ui::list_athletes)
 {
     athletesUi->setupUi(this);
-
+    QSqlQueryModel *athletesModel = new QSqlQueryModel;
+    athletesModel->setQuery("SELECT athleteName, athleteSurName, division, bornDate, mailAddress FROM TrainingPlanV2.T_cfg_Athletes;");
+    athletesModel->setHeaderData(0, Qt::Horizontal, tr("Nome"));
+    athletesModel->setHeaderData(1, Qt::Horizontal, tr("Cognome"));
+    athletesModel->setHeaderData(2, Qt::Horizontal, tr("Divisione"));
+    athletesModel->setHeaderData(3, Qt::Horizontal, tr("Data Di Nascita"));
+    athletesModel->setHeaderData(4, Qt::Horizontal, tr("Mail"));
+    athletesUi->TBL_athletesList->setModel(athletesModel);
+    athletesUi->TBL_athletesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    athletesUi->TBL_athletesList->show();
 }
 
 
 void list_athletes::initializeModel(QSqlTableModel *model)
-{   /*ui->TBL_athletesList->setModel(model);*/
-    athletesUi->TBL_athletesList->setEditTriggers(QAbstractItemView::NoEditTriggers);
-//    model->setTable("person");
-//    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-//    model->select();
-
-//    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
-//    model->setHeaderData(1, Qt::Horizontal, QObject::tr("First name"));
-//    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Last name"));
+{
+    athletesUi->TBL_athletesList->setModel(model);
+    athletesUi->TBL_athletesList->show();
 }
 
 
@@ -34,9 +37,4 @@ QSqlQuery list_athletes::getAthletesList(){
     QSqlQuery query;
     query.exec("SELECT * FROM TrainingPlanV2.`dbo.T_cfg_Athletes`;");
     return query;
-}
-
-void list_athletes::on_pushButton_clicked()
-{
-//chiamata a finestra aggiunta atleta
 }

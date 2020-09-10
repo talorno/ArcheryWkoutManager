@@ -2,6 +2,8 @@
 #define EDITOR_EXERCISE_H
 
 #include <QDialog>
+#include <QSqlQueryModel>
+#include <QTableView>
 
 namespace Ui {
 class editor_exercise;
@@ -19,7 +21,8 @@ private slots:
     void on_BTN_SaveEx_clicked();
 
 private:
-    Ui::editor_exercise *ui;
+    Ui::editor_exercise *exEditor_ui;
+    void ui_PopulateComboExCat();
 };
 
 #endif // EDITOR_EXERCISE_H

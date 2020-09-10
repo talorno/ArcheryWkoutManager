@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->LBL_numWkouts->setText(QString::number(getNumWkouts()));
     ui->LBL_numEx->setText(QString::number(getNumExercises()));
 
-
 }
 
 MainWindow::~MainWindow()
@@ -84,7 +83,7 @@ qint8 MainWindow::getNumAthletes()
 
     QSqlDatabase DB = QSqlDatabase::database();
     QSqlQuery query;
-    query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+    query.exec("SELECT COUNT(*) FROM T_cfg_Athletes");
     query.next();
     qint8 count = query.value(0).toInt();
 
@@ -96,13 +95,14 @@ qint8 MainWindow::getNumAthletes()
 return count;
 }
 
+
 qint8 MainWindow::getNumWkouts()
 {
 //ritorna numero piani da db
     //query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
     QSqlDatabase DB = QSqlDatabase::database();
     QSqlQuery query;
-    query.exec("SELECT COUNT(*) FROM`dbo.T_cfg_Athletes`");
+    query.exec("SELECT COUNT(*) FROM T_cfg_Athletes");
     query.next();
     qint8 count = query.value(0).toInt();
 
@@ -120,7 +120,7 @@ qint8 MainWindow::getNumExercises()
 
             QSqlDatabase DB = QSqlDatabase::database();
             QSqlQuery query;
-            query.exec("SELECT COUNT(*) FROM`dbo.T_Sys_Exercises`");
+            query.exec("SELECT COUNT(*) FROM T_Sys_Exercises");
             query.next();
             qint8 count = query.value(0).toInt();
 

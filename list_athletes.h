@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSqlQuery>
 #include <QSqlTableModel>
+#include <QSqlQueryModel>
 #include <QTableView>
 
 
@@ -20,7 +21,6 @@ public:
     ~list_athletes();
 
 private slots:
-    void on_pushButton_clicked();
     void initializeModel(QSqlTableModel *model);
 
 private:

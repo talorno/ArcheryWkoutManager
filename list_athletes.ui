@@ -22,7 +22,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Athletes List</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
