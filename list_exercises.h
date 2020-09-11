@@ -20,8 +20,8 @@ public:
 private slots:
     void on_BTN_addEx_clicked();
     void ui_PopulateComboExCat();
-    void ui_PopulateComboExSubCat(QString subCat);
-    void ui_PopulateExTable(QString cat, QString subCat);
+    void ui_PopulateComboExSubCat();
+    void ui_PopulateExTable();
     void on_COMBO_exCat_currentIndexChanged(const QString &arg1);
     void on_COMBO_exSubCat_currentIndexChanged(const QString &arg1);
 
@@ -29,6 +29,9 @@ private slots:
 
 private:
     Ui::list_exercises *exercisesUi;
+    QString currentCat;
+    QString currentSubCat;
+    void updateExList();
 };
 
 #endif // LIST_EXERCISES_H
