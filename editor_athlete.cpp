@@ -12,3 +12,8 @@ editor_athlete::~editor_athlete()
 {
     delete ui;
 }
+
+void editor_athlete::on_BTN_close_clicked()
+{
+    editor_athlete::close();
+}

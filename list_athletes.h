@@ -22,9 +22,12 @@ public:
 
 private slots:
     void initializeModel(QSqlTableModel *model);
+    void on_BTN_newAthlete_clicked();
+    void tableDblClick();
 
 private:
     Ui::list_athletes *athletesUi;
+    QItemSelectionModel *athletesSelectionModel;
     QSqlQuery getAthletesList();
 
 };

@@ -15,6 +15,9 @@ public:
     explicit editor_athlete(QWidget *parent = nullptr);
     ~editor_athlete();
 
+private slots:
+    void on_BTN_close_clicked();
+
 private:
     Ui::editor_athlete *ui;
 };

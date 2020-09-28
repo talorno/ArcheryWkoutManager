@@ -270,23 +270,41 @@
         </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="BTN_close">
+      <widget class="QWidget" name="gridLayoutWidget_3">
        <property name="geometry">
         <rect>
-         <x>904</x>
-         <y>670</y>
-         <width>121</width>
-         <height>23</height>
+         <x>830</x>
+         <y>640</y>
+         <width>208</width>
+         <height>80</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Chiudi Editor</string>
-       </property>
+       <layout class="QGridLayout" name="LYT_buttons">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="BTN_save">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Salva Atleta</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="BTN_close">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Chiudi Editor</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

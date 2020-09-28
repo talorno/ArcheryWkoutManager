@@ -39,8 +39,6 @@ void list_exercises::ui_PopulateExTable(){
 
 
 
-
-
     exercisesModel->setHeaderData(0, Qt::Horizontal, tr("Tipo Esercizio"));
     exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Descrizione"));
     exercisesModel->setHeaderData(2, Qt::Horizontal, tr("Unità"));

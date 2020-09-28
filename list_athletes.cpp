@@ -1,5 +1,7 @@
 #include "list_athletes.h"
 #include "ui_list_athletes.h"
+#include "editor_athlete.h"
+#include <QtDebug>
 
 
 
@@ -18,6 +20,11 @@ list_athletes::list_athletes(QWidget *parent) :
     athletesUi->TBL_athletesList->setModel(athletesModel);
     athletesUi->TBL_athletesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     athletesUi->TBL_athletesList->show();
+
+    //QUESTO NON FUNZIONA
+
+    connect(athletesSelectionModel, SIGNAL(athletesSelectionModel->currentIndex()), this, SLOT(tableDblClick()));
+
 }
 
 
@@ -25,6 +32,8 @@ void list_athletes::initializeModel(QSqlTableModel *model)
 {
     athletesUi->TBL_athletesList->setModel(model);
     athletesUi->TBL_athletesList->show();
+    athletesSelectionModel = athletesUi->TBL_athletesList->selectionModel();
+
 }
 
 
@@ -38,3 +47,15 @@ QSqlQuery list_athletes::getAthletesList(){
     query.exec("SELECT * FROM TrainingPlanV2.`dbo.T_cfg_Athletes`;");
     return query;
 }
+
+void list_athletes::on_BTN_newAthlete_clicked()
+{
+    editor_athlete editor_athlete;
+    editor_athlete.setModal(true);
+    editor_athlete.exec();
+}
+
+void list_athletes::tableDblClick(){
+    qDebug() << "DOUBLECLICK";
+}
+

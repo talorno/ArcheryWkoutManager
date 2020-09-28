@@ -34,10 +34,19 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="LYT_listAthlete">
+    <item row="3" column="0">
+     <widget class="QPushButton" name="BTN_newAthlete">
+      <property name="text">
+       <string>Nuovo Atleta</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QTableView" name="TBL_athletesList"/>
     </item>
    </layout>
+   <zorder>TBL_athletesList</zorder>
+   <zorder>BTN_newAthlete</zorder>
   </widget>
  </widget>
  <resources/>
