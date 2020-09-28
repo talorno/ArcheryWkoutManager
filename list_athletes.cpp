@@ -24,7 +24,6 @@ list_athletes::list_athletes(QWidget *parent) :
     //QUESTO NON FUNZIONA
 
     connect(athletesSelectionModel, SIGNAL(athletesSelectionModel->currentIndex()), this, SLOT(tableDblClick()));
-
 }
 
 
@@ -33,7 +32,6 @@ void list_athletes::initializeModel(QSqlTableModel *model)
     athletesUi->TBL_athletesList->setModel(model);
     athletesUi->TBL_athletesList->show();
     athletesSelectionModel = athletesUi->TBL_athletesList->selectionModel();
-
 }
 
 
