@@ -21,9 +21,7 @@ list_athletes::list_athletes(QWidget *parent) :
     athletesUi->TBL_athletesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     athletesUi->TBL_athletesList->show();
 
-    //QUESTO NON FUNZIONA
-
-    connect(athletesSelectionModel, SIGNAL(athletesSelectionModel->currentIndex()), this, SLOT(tableDblClick()));
+    connect(athletesUi->TBL_athletesList, &QAbstractItemView::doubleClicked, this, list_athletes::tableDblClick());
 }
 
 
@@ -42,7 +40,7 @@ list_athletes::~list_athletes()
 
 QSqlQuery list_athletes::getAthletesList(){
     QSqlQuery query;
-    query.exec("SELECT * FROM TrainingPlanV2.`dbo.T_cfg_Athletes`;");
+    query.exec("SELECT * FROM TrainingPlanV2.T_cfg_Athletes;");
     return query;
 }
 

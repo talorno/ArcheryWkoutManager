@@ -25,15 +25,15 @@ void list_exercises::ui_PopulateExTable(){
     }
     else if(currentCat.isEmpty() == false && currentSubCat == "ALL"){
 
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseTypeDescr;");
+        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
     qDebug() << "CASE2  - cat-> "+currentCat+" subCat-> "+currentSubCat;
-    qDebug() <<"CASE2 - SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseTypeDescr";
+    qDebug() <<"CASE2 - SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN .T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr";
     }
     else if(currentCat.isEmpty() == false && currentSubCat.isEmpty() == false){
 
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"'AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseTypeDescr;");
+        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"'AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
     qDebug() << "CASE3  - cat-> "+currentCat+" subCat-> "+currentSubCat;
-    qDebug() <<"CASE3 - SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' AND exerciseSubTypeDescription = '"+currentSubCat+"' ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseTypeDescr;";
+    qDebug() <<"CASE3 - SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;";
 
     }
 
@@ -84,11 +84,11 @@ void list_exercises::ui_PopulateComboExSubCat(){
     QSqlQueryModel *ComboExSubCatModel = new QSqlQueryModel;
 
     if(currentCat.isEmpty()== true){
-            ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescription FROM TrainingPlanV2.T_sys_ExerciseType JOIN T_sys_ExerciseSubType WHERE                     T_sys_ExerciseSubType.exerciseType = T_sys_ExerciseType.exerciseType;");
+            ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescr FROM TrainingPlanV2.T_sys_ExerciseType JOIN T_sys_ExerciseSubType WHERE                     T_sys_ExerciseSubType.exerciseType = T_sys_ExerciseType.exerciseType;");
 
     }
     else{
-            ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescription FROM TrainingPlanV2.T_sys_ExerciseType JOIN T_sys_ExerciseSubType WHERE                     T_sys_ExerciseSubType.exerciseType = T_sys_ExerciseType.exerciseType AND T_sys_ExerciseType.exerciseTypeDescr='"+currentCat+"';");
+            ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescr FROM TrainingPlanV2.T_sys_ExerciseType, TrainingPlanV2.T_sys_ExerciseSubType JOIN T_sys_ExerciseSubType WHERE T_sys_ExerciseSubType.exerciseType = T_sys_ExerciseType.exerciseType AND T_sys_ExerciseType.exerciseTypeDescr='"+currentCat+"';");
             qDebug() << currentCat;
 
 }
