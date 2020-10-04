@@ -6,6 +6,7 @@
 #include <QSqlTableModel>
 #include <QSqlQueryModel>
 #include <QTableView>
+#include <QDateTime>
 
 
 namespace Ui {
@@ -23,7 +24,7 @@ public:
 private slots:
     void initializeModel(QSqlTableModel *model);
     void on_BTN_newAthlete_clicked();
-    void tableDblClick();
+    void tableDblClick(QModelIndex index);
 
 private:
     Ui::list_athletes *athletesUi;

@@ -24,6 +24,7 @@ private slots:
     void ui_PopulateExTable();
     void on_COMBO_exCat_currentIndexChanged(const QString &arg1);
     void on_COMBO_exSubCat_currentIndexChanged(const QString &arg1);
+    void tableDblClick(QModelIndex index);
 
 
 

@@ -55,7 +55,10 @@
        </font>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Box</enum>
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
       </property>
       <property name="text">
        <string>FOTO</string>
@@ -165,7 +168,11 @@
          </widget>
         </item>
         <item row="0" column="3">
-         <widget class="QDateEdit" name="DATE_bithday"/>
+         <widget class="QDateEdit" name="DATE_birthday">
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
         <item row="2" column="1">
          <widget class="QTextEdit" name="TXT_email">

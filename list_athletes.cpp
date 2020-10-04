@@ -21,7 +21,7 @@ list_athletes::list_athletes(QWidget *parent) :
     athletesUi->TBL_athletesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     athletesUi->TBL_athletesList->show();
 
-    connect(athletesUi->TBL_athletesList, &QAbstractItemView::doubleClicked, this, list_athletes::tableDblClick());
+    connect(athletesUi->TBL_athletesList, &QAbstractItemView::doubleClicked, this, &list_athletes::tableDblClick);
 }
 
 
@@ -51,7 +51,17 @@ void list_athletes::on_BTN_newAthlete_clicked()
     editor_athlete.exec();
 }
 
-void list_athletes::tableDblClick(){
-    qDebug() << "DOUBLECLICK";
+void list_athletes::tableDblClick(QModelIndex index){
+    QString name;
+    QString surname;
+    QDateTime birthday;
+    int row = index.row();
+
+    name = index.sibling(row, 0).data().toString();
+    surname = index.sibling(row, 1).data().toString();
+    birthday = index.sibling(row, 3).data().toDateTime();
+
+    //qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 3).data().toString() ;
+
 }
 

@@ -16,14 +16,13 @@ editor_exercise::~editor_exercise()
 }
 
 
-
 void editor_exercise::ui_PopulateComboExCat(){
 
                 QSqlQueryModel *ComboExCatModel = new QSqlQueryModel;
                 ComboExCatModel->setQuery("SELECT exerciseTypeDescr FROM TrainingPlanV2.T_sys_ExerciseType;");
                 exEditor_ui->COMBO_exCat->setModel(ComboExCatModel);
                 QSqlQueryModel *ComboExSubCatModel = new QSqlQueryModel;
-                ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescription FROM TrainingPlanV2.T_sys_ExerciseSubType;");
+                ComboExSubCatModel->setQuery("SELECT exerciseSubTypeDescr FROM TrainingPlanV2.T_sys_ExerciseSubType;");
                 exEditor_ui->COMBO_exSubCat->setModel(ComboExSubCatModel);
                 int catWidth = exEditor_ui->COMBO_exCat->minimumSizeHint().width();
                 exEditor_ui->COMBO_exCat->setMinimumWidth(catWidth);
