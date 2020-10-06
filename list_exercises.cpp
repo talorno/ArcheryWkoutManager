@@ -15,8 +15,6 @@ list_exercises::list_exercises(QWidget *parent) :
     exercisesUi->COMBO_exSubCat->setEnabled(false);
 
 
-
-
     connect(exercisesUi->LIST_listEx, &QAbstractItemView::doubleClicked, this, &list_exercises::tableDblClick);
 }
 
@@ -76,7 +74,8 @@ void list_exercises::ui_PopulateComboExCat(){
     QSqlQueryModel *ComboExCatModel = new QSqlQueryModel;
 
     ComboExCatModel->setQuery("SELECT exerciseTypeDescr FROM TrainingPlanV2.T_sys_ExerciseType;");
-
+    //ComboExCatModel->insertRow(0);
+    //ComboExCatModel->setData(ComboExCatModel->index(0,2),"test");
     exercisesUi->COMBO_exCat->setModel(ComboExCatModel);
     int catWidth = exercisesUi->COMBO_exCat->minimumSizeHint().width();
     exercisesUi->COMBO_exCat->setMinimumWidth(catWidth);
