@@ -14,7 +14,7 @@ class editor_athlete : public QDialog
 
 public:
     explicit editor_athlete(QWidget *parent = nullptr);
-    explicit editor_athlete( athlete athlete, QWidget *parent = nullptr);
+    editor_athlete(athlete *athlete, QWidget *parent = nullptr);
     ~editor_athlete();
 
 private slots:

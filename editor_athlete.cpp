@@ -12,12 +12,14 @@ editor_athlete::editor_athlete(QWidget *parent) :
 
 }
 
-editor_athlete::editor_athlete(QWidget *parent, athlete athlete) :
+editor_athlete::editor_athlete(athlete *athlete, QWidget *parent) :
     QDialog(parent),
     athleteEditorUi(new Ui::editor_athlete)
 {
     athleteEditorUi->setupUi(this);
-    athleteEditorUi->TXT_name->setText("test");
+    athleteEditorUi->TXT_name->setText(athlete->getName());
+    athleteEditorUi->TXT_surname->setText(athlete->getSurname());
+    athleteEditorUi->TXT_nickname->setText(athlete->getNickname());
 
 }
 

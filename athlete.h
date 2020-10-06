@@ -13,15 +13,6 @@ public:
     athlete(QString name, QString surname, QString nickname, QString division, QDate birthday, QString mail, qint8 isActive);
 
 
-private:
-    QString name;
-    QString surname;
-    QString nickname;
-    QString division;
-    QDate birthday;
-    QString mail;
-    qint8   isActive;
-
     void setName(QString);
     void setSurname(QString);
     void setNickname(QString);
@@ -37,6 +28,17 @@ private:
     QDate getBirthday();
     QString getMail();
     qint8 getActive();
+
+
+
+private:
+    QString name;
+    QString surname;
+    QString nickname;
+    QString division;
+    QDate birthday;
+    QString mail;
+    qint8   isActive;
 
 
 };
