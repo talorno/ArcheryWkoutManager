@@ -1,17 +1,31 @@
 #include "editor_athlete.h"
 #include "ui_editor_athlete.h"
+#include "athlete.h"
+
+
 
 editor_athlete::editor_athlete(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::editor_athlete)
+    athleteEditorUi(new Ui::editor_athlete)
 {
-    ui->setupUi(this);
+    athleteEditorUi->setupUi(this);
 
 }
 
+editor_athlete::editor_athlete(QWidget *parent, athlete athlete) :
+    QDialog(parent),
+    athleteEditorUi(new Ui::editor_athlete)
+{
+    athleteEditorUi->setupUi(this);
+    athleteEditorUi->TXT_name->setText("test");
+
+}
+
+
+
 editor_athlete::~editor_athlete()
 {
-    delete ui;
+    delete athleteEditorUi;
 }
 
 void editor_athlete::on_BTN_close_clicked()

@@ -31,16 +31,19 @@ void list_exercises::ui_PopulateExTable(){
     else if(currentCat.isEmpty() == false && currentSubCat == "ALL"){
 
         exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
+        qDebug() << "case2 ->";
+        qDebug() << "SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;";
 
     }
     else if(currentCat.isEmpty() == false && currentSubCat.isEmpty() == false){
 
         exercisesModel->setQuery("SELECT exerciseTypeDescr, exerciseSubTypeDescr description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises, T_sys_ExerciseSubType  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"'AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
 
+        qDebug() << "case3 ->";
+        qDebug() << "SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;";
+
 
     }
-
-
 
     exercisesModel->setHeaderData(0, Qt::Horizontal, tr("Tipo Esercizio"));
     exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Descrizione"));

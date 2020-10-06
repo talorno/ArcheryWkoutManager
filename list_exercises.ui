@@ -187,6 +187,9 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
+    </property>
     <item>
      <widget class="QPushButton" name="BTN_addEx">
       <property name="sizePolicy">
@@ -201,14 +204,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QTableView" name="LIST_listEx">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
+     <widget class="QTableView" name="LIST_listEx"/>
     </item>
    </layout>
   </widget>

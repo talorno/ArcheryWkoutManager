@@ -1,6 +1,8 @@
 #include "list_athletes.h"
 #include "ui_list_athletes.h"
 #include "editor_athlete.h"
+#include "athlete.h"
+#include <qint
 #include <QtDebug>
 
 
@@ -54,14 +56,27 @@ void list_athletes::on_BTN_newAthlete_clicked()
 void list_athletes::tableDblClick(QModelIndex index){
     QString name;
     QString surname;
-    QDateTime birthday;
+    QString nickname;
+    QString division;
+    QString mail;
+    QDate birthday;
+    qint8 isActive;
     int row = index.row();
 
     name = index.sibling(row, 0).data().toString();
     surname = index.sibling(row, 1).data().toString();
-    birthday = index.sibling(row, 3).data().toDateTime();
+    birthday = index.sibling(row, 3).data().toDate();
 
-    //qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 3).data().toString() ;
+    //new athlete(name,surname,)
+
+    qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 3).data().toString() ;
+
+
+    athlete athlToEdit = new athlete(name,surname,nickname,division,birthday,mail,isActive);
+
+    editor_athlete editor_athlete(athlToEdit, parent());
+    editor_athlete.setModal(true);
+    editor_athlete.exec();
 
 }
 
