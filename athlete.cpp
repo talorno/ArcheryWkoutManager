@@ -4,10 +4,11 @@ athlete::athlete()
 {
 
 }
-athlete::athlete(QString name, QString surname, QString nickname, QString division, QDate birthday, QString mail, qint8 isActive){
+athlete::athlete(QString name, QString surname, QString nickname,QString athlClass, QString division, QDate birthday, QString mail, qint8 isActive){
     this->setName(name);
     this->setSurname(surname);
     this->setNickname(nickname);
+    this->setClass(athlClass);
     this->setDivision(division);
     this->setBirthday(birthday);
     this->setMail(mail);
@@ -24,6 +25,10 @@ void athlete::setSurname(QString surname){
 void athlete::setNickname(QString nickname){
     this->nickname = nickname;
 }
+void athlete::setClass(QString athlClass){
+    this->athlClass = athlClass;
+}
+
 void athlete::setDivision(QString division){
     this->division = division;
 }
@@ -46,6 +51,9 @@ QString athlete::getSurname(){
 }
 QString athlete::getNickname(){
     return this->nickname;
+}
+QString athlete::getClass(){
+    return this->athlClass;
 }
 QString athlete::getDivision(){
     return this->division;

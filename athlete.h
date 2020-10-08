@@ -10,12 +10,13 @@ class athlete
 
 public:
     athlete();
-    athlete(QString name, QString surname, QString nickname, QString division, QDate birthday, QString mail, qint8 isActive);
+    athlete(QString name, QString surname, QString nickname, QString athlClass, QString division, QDate birthday, QString mail, qint8 isActive);
 
 
     void setName(QString);
     void setSurname(QString);
     void setNickname(QString);
+    void setClass(QString);
     void setDivision(QString);
     void setBirthday(QDate);
     void setMail(QString);
@@ -24,6 +25,7 @@ public:
     QString getName();
     QString getSurname();
     QString getNickname();
+    QString getClass();
     QString getDivision();
     QDate getBirthday();
     QString getMail();
@@ -35,6 +37,7 @@ private:
     QString name;
     QString surname;
     QString nickname;
+    QString athlClass;
     QString division;
     QDate birthday;
     QString mail;

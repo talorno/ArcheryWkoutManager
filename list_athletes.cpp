@@ -12,13 +12,19 @@ list_athletes::list_athletes(QWidget *parent) :
 {
     athletesUi->setupUi(this);
     QSqlQueryModel *athletesModel = new QSqlQueryModel;
-    athletesModel->setQuery("SELECT athleteName, athleteSurName, division, bornDate, mailAddress FROM TrainingPlanV2.T_cfg_Athletes;");
-    athletesModel->setHeaderData(0, Qt::Horizontal, tr("Nome"));
-    athletesModel->setHeaderData(1, Qt::Horizontal, tr("Cognome"));
-    athletesModel->setHeaderData(2, Qt::Horizontal, tr("Divisione"));
-    athletesModel->setHeaderData(3, Qt::Horizontal, tr("Data Di Nascita"));
-    athletesModel->setHeaderData(4, Qt::Horizontal, tr("Mail"));
+    //athletesModel->setQuery("SELECT athleteName, athleteSurName, division, bornDate, mailAddress FROM TrainingPlanV2.T_cfg_Athletes;");
+
+    athletesModel->setQuery("SELECT * FROM TrainingPlanV2.T_cfg_Athletes;");
+
+
+    athletesModel->setHeaderData(1, Qt::Horizontal, tr("Nome"));
+    athletesModel->setHeaderData(2, Qt::Horizontal, tr("Cognome"));
+    athletesModel->setHeaderData(3, Qt::Horizontal, tr("Divisione"));
+    athletesModel->setHeaderData(4, Qt::Horizontal, tr("Data Di Nascita"));
+    athletesModel->setHeaderData(5, Qt::Horizontal, tr("Mail"));
     athletesUi->TBL_athletesList->setModel(athletesModel);
+    athletesUi->TBL_athletesList->setColumnHidden(0,true);
+    athletesUi->TBL_athletesList->setColumnHidden(6,true);
     athletesUi->TBL_athletesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     athletesUi->TBL_athletesList->show();
 
@@ -57,24 +63,25 @@ void list_athletes::tableDblClick(QModelIndex index){
     QString surname;
     QString nickname;
     QString division;
+    QString athlClass;
     QString mail;
     QDate birthday;
     qint8 isActive;
 
     int row = index.row();
 
-    name = index.sibling(row, 0).data().toString();
-    surname = index.sibling(row, 1).data().toString();
-    //nickname = ;
-    //division = ;
-    //mail = ;
-    birthday = index.sibling(row, 3).data().toDate();
-    //isActive = ;
+    name = index.sibling(row, 1).data().toString();
+    surname = index.sibling(row, 2).data().toString();
+    nickname = index.sibling(row, 0).data().toString();
+    //division = index.sibling(row, 4).data().toString();
+    mail = index.sibling(row, 5).data().toString();
+    birthday = index.sibling(row, 4).data().toDate();
+    isActive = index.sibling(row, 6).data().toBool();
 
-    qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 3).data().toString() ;
+    qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 2).data().toString() +" "+ index.sibling(row, 3).data().toString() +" "+ index.sibling(row, 4).data().toString() +" "+index.sibling(row, 5).data().toString()+" "+index.sibling(row, 6).data().toString();
 
 
-    athlete *athlToEdit = new athlete(name,surname,nickname,division,birthday,mail,isActive);
+    athlete *athlToEdit = new athlete(name,surname,nickname,athlClass,division,birthday,mail,isActive);
 
     editor_athlete editor_athlete(athlToEdit, this);
     editor_athlete.setModal(true);

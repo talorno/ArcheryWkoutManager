@@ -4,11 +4,13 @@
 
 
 
+
 editor_athlete::editor_athlete(QWidget *parent) :
     QDialog(parent),
     athleteEditorUi(new Ui::editor_athlete)
 {
     athleteEditorUi->setupUi(this);
+    populateDivisionComboBox();
 
 }
 
@@ -17,12 +19,16 @@ editor_athlete::editor_athlete(athlete *athlete, QWidget *parent) :
     athleteEditorUi(new Ui::editor_athlete)
 {
     athleteEditorUi->setupUi(this);
+
+    populateDivisionComboBox();
+
     athleteEditorUi->TXT_name->setText(athlete->getName());
     athleteEditorUi->TXT_surname->setText(athlete->getSurname());
-    athleteEditorUi->TXT_nickname->setText(athlete->getNickname());
-
+    athleteEditorUi->TXT_nick->setText(athlete->getNickname());
+    athleteEditorUi->TXT_email->setText(athlete->getMail());
+    athleteEditorUi->DATE_birthday->setDate(athlete->getBirthday());
+    athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlete->getActive());
 }
-
 
 
 editor_athlete::~editor_athlete()
@@ -35,6 +41,17 @@ void editor_athlete::on_BTN_close_clicked()
     editor_athlete::close();
 }
 
+void editor_athlete::populateClassComboBox(){
+//DA RIEMPIRE
+
+}
+void editor_athlete::populateDivisionComboBox(){
+    QSqlQueryModel *DivBoxModel = new QSqlQueryModel;
+
+    DivBoxModel->setQuery("SELECT divisionDescr FROM T_sys_Divisions;");
+    athleteEditorUi->COMBO_division->setModel(DivBoxModel);
+
+}
 
 /*
  *

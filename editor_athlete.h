@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <athlete.h>
+#include <QSqlQueryModel>
+#include <QTableView>
 
 namespace Ui {
 class editor_athlete;
@@ -22,6 +24,8 @@ private slots:
 
 private:
     Ui::editor_athlete *athleteEditorUi;
+    void populateClassComboBox();
+    void populateDivisionComboBox();
 
 };
 
