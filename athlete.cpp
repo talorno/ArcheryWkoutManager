@@ -4,6 +4,14 @@ athlete::athlete()
 {
 
 }
+athlete::athlete(QString nickname){
+    /*populate athlete*/
+    this->setNickname(nickname);
+
+}
+
+
+
 athlete::athlete(QString name, QString surname, QString nickname,QString athlClass, QString division, QDate birthday, QString mail, qint8 isActive){
     this->setName(name);
     this->setSurname(surname);

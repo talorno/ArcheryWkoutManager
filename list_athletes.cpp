@@ -12,7 +12,7 @@ list_athletes::list_athletes(QWidget *parent) :
 {
     athletesUi->setupUi(this);
     QSqlQueryModel *athletesModel = new QSqlQueryModel;
-    //athletesModel->setQuery("SELECT athleteName, athleteSurName, division, bornDate, mailAddress FROM TrainingPlanV2.T_cfg_Athletes;");
+
 
     athletesModel->setQuery("SELECT * FROM TrainingPlanV2.T_cfg_Athletes;");
 
@@ -59,31 +59,16 @@ void list_athletes::on_BTN_newAthlete_clicked()
 }
 
 void list_athletes::tableDblClick(QModelIndex index){
-    QString name;
-    QString surname;
     QString nickname;
-    QString division;
-    QString athlClass;
-    QString mail;
-    QDate birthday;
-    qint8 isActive;
 
     int row = index.row();
 
-    name = index.sibling(row, 1).data().toString();
-    surname = index.sibling(row, 2).data().toString();
     nickname = index.sibling(row, 0).data().toString();
-    //division = index.sibling(row, 4).data().toString();
-    mail = index.sibling(row, 5).data().toString();
-    birthday = index.sibling(row, 4).data().toDate();
-    isActive = index.sibling(row, 6).data().toBool();
-
-    qDebug() << index.sibling(row, 0).data().toString() +" "+ index.sibling(row, 1).data().toString() +" "+ index.sibling(row, 2).data().toString() +" "+ index.sibling(row, 3).data().toString() +" "+ index.sibling(row, 4).data().toString() +" "+index.sibling(row, 5).data().toString()+" "+index.sibling(row, 6).data().toString();
 
 
-    athlete *athlToEdit = new athlete(name,surname,nickname,athlClass,division,birthday,mail,isActive);
 
-    editor_athlete editor_athlete(athlToEdit, this);
+
+    editor_athlete editor_athlete(nickname, this);
     editor_athlete.setModal(true);
     editor_athlete.exec();
 

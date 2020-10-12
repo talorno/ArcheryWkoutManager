@@ -14,7 +14,7 @@ editor_athlete::editor_athlete(QWidget *parent) :
 
 }
 
-editor_athlete::editor_athlete(athlete *athlete, QWidget *parent) :
+editor_athlete::editor_athlete(QString nickname, QWidget *parent) :
     QDialog(parent),
     athleteEditorUi(new Ui::editor_athlete)
 {
@@ -22,12 +22,13 @@ editor_athlete::editor_athlete(athlete *athlete, QWidget *parent) :
 
     populateDivisionComboBox();
 
-    athleteEditorUi->TXT_name->setText(athlete->getName());
+    athlete *athleteToEdit = new athlete();
+    /*athleteEditorUi->TXT_name->setText(athlete->getName());
     athleteEditorUi->TXT_surname->setText(athlete->getSurname());
     athleteEditorUi->TXT_nick->setText(athlete->getNickname());
     athleteEditorUi->TXT_email->setText(athlete->getMail());
     athleteEditorUi->DATE_birthday->setDate(athlete->getBirthday());
-    athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlete->getActive());
+    athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlete->getActive());*/
 }
 
 
