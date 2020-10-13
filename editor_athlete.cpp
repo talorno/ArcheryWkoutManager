@@ -38,7 +38,15 @@ editor_athlete::editor_athlete(QString nickname, QWidget *parent) :
     athleteEditorUi->DATE_birthday->setDate(athlToEditQRY.value(4).toDate());
     athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlToEditQRY.value(6).toBool());
 
+
 }
+
+
+void editor_athlete::insertAthlete(QString nick, QString name, QString surname,QString division, QDate borndate,QString mailAddress,int isActive){
+    QSqlQuery athlToInsertQRY;
+    QString testdate = borndate.toString();
+    athlToInsertQRY.exec("INSERT INTO T_cfg_Athletes (athleteNickName, athleteName, athleteSurName, division, bornDate, mailAddress, isActive) VALUES ('"+nick+"','"+name+"','"+surname+"','"+division+"','"+testdate+"','"+mailAddress+"','"+isActive+"');");
+                                                                                                                                                           };
 
 
 editor_athlete::~editor_athlete()
@@ -50,6 +58,12 @@ void editor_athlete::on_BTN_close_clicked()
 {
     editor_athlete::close();
 }
+
+
+
+
+
+
 
 void editor_athlete::populateClassComboBox(){
 //DA RIEMPIRE

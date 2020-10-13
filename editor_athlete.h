@@ -21,6 +21,7 @@ public:
 
 private slots:
     void on_BTN_close_clicked();
+    void insertAthlete(QString,QString,QString,QString,QDate,QString,int);
 
 private:
     Ui::editor_athlete *athleteEditorUi;
