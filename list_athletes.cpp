@@ -65,9 +65,6 @@ void list_athletes::tableDblClick(QModelIndex index){
 
     nickname = index.sibling(row, 0).data().toString();
 
-
-
-
     editor_athlete editor_athlete(nickname, this);
     editor_athlete.setModal(true);
     editor_athlete.exec();

@@ -1,6 +1,8 @@
 #include "editor_athlete.h"
 #include "ui_editor_athlete.h"
 #include "athlete.h"
+#include <QSqlQuery>
+#include <QDebug>
 
 
 
@@ -22,7 +24,28 @@ editor_athlete::editor_athlete(QString nickname, QWidget *parent) :
 
     populateDivisionComboBox();
 
-    athlete *athleteToEdit = new athlete();
+    QSqlQuery athlToEditQRY;
+
+    athlToEditQRY.exec("SELECT athleteNickName, athleteName, athleteSurName, division, bornDate, mailAddress, isActive FROM T_cfg_Athletes WHERE athleteNickName='"+nickname+"';");
+
+    athlToEditQRY.first();
+
+    qDebug() << athlToEditQRY.value(0);
+    qDebug() << athlToEditQRY.value(1);
+    qDebug() << athlToEditQRY.value(2);
+    qDebug() << athlToEditQRY.value(3);
+    qDebug() << athlToEditQRY.value(4);
+    qDebug() << athlToEditQRY.value(5);
+    qDebug() << athlToEditQRY.value(6);
+    qDebug() << athlToEditQRY.value(7).toString();
+
+    athleteEditorUi->TXT_nick->setText(athlToEditQRY.value(0).toString());
+    athleteEditorUi->TXT_name->setText(athlToEditQRY.value(1).toString());
+    athleteEditorUi->TXT_surname->setText(athlToEditQRY.value(2).toString());
+    athleteEditorUi->TXT_email->setText(athlToEditQRY.value(5).toString());
+    athleteEditorUi->DATE_birthday->setDate(athlToEditQRY.value(4).toDate());
+
+
     /*athleteEditorUi->TXT_name->setText(athlete->getName());
     athleteEditorUi->TXT_surname->setText(athlete->getSurname());
     athleteEditorUi->TXT_nick->setText(athlete->getNickname());

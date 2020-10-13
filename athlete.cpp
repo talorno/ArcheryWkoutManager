@@ -7,7 +7,6 @@ athlete::athlete()
 athlete::athlete(QString nickname){
     /*populate athlete*/
     this->setNickname(nickname);
-
 }
 
 
