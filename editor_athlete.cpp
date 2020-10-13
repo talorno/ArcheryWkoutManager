@@ -30,28 +30,14 @@ editor_athlete::editor_athlete(QString nickname, QWidget *parent) :
 
     athlToEditQRY.first();
 
-    qDebug() << athlToEditQRY.value(0);
-    qDebug() << athlToEditQRY.value(1);
-    qDebug() << athlToEditQRY.value(2);
-    qDebug() << athlToEditQRY.value(3);
-    qDebug() << athlToEditQRY.value(4);
-    qDebug() << athlToEditQRY.value(5);
-    qDebug() << athlToEditQRY.value(6);
-    qDebug() << athlToEditQRY.value(7).toString();
 
     athleteEditorUi->TXT_nick->setText(athlToEditQRY.value(0).toString());
     athleteEditorUi->TXT_name->setText(athlToEditQRY.value(1).toString());
     athleteEditorUi->TXT_surname->setText(athlToEditQRY.value(2).toString());
     athleteEditorUi->TXT_email->setText(athlToEditQRY.value(5).toString());
     athleteEditorUi->DATE_birthday->setDate(athlToEditQRY.value(4).toDate());
+    athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlToEditQRY.value(6).toBool());
 
-
-    /*athleteEditorUi->TXT_name->setText(athlete->getName());
-    athleteEditorUi->TXT_surname->setText(athlete->getSurname());
-    athleteEditorUi->TXT_nick->setText(athlete->getNickname());
-    athleteEditorUi->TXT_email->setText(athlete->getMail());
-    athleteEditorUi->DATE_birthday->setDate(athlete->getBirthday());
-    athleteEditorUi->BOX_CHECK_isAthlActive->setChecked(athlete->getActive());*/
 }
 
 
