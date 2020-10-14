@@ -34,19 +34,31 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="LYT_listAthlete">
-    <item row="3" column="0">
-     <widget class="QPushButton" name="BTN_newAthlete">
-      <property name="text">
-       <string>Nuovo Atleta</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QTableView" name="TBL_athletesList"/>
     </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="LYT_btns">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="BTN_newAthlete">
+        <property name="text">
+         <string>Nuovo Atleta</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>Elimina Atleta</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
-   <zorder>TBL_athletesList</zorder>
-   <zorder>BTN_newAthlete</zorder>
   </widget>
  </widget>
  <resources/>

@@ -27,6 +27,9 @@ private:
     Ui::editor_athlete *athleteEditorUi;
     void populateClassComboBox();
     void populateDivisionComboBox();
+    void pickDivisionComboBox(QString);
+    void pickClassComboBox(QString);
+
 
 };
 
