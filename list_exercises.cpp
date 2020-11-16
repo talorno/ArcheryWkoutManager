@@ -22,20 +22,20 @@ void list_exercises::ui_PopulateExTable(){
     QSqlQueryModel *exercisesModel = new QSqlQueryModel;
 
     if(currentCat == "ALL" && currentSubCat == "ALL"){
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
+        exercisesModel->setQuery("SELECT exerciseID, exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM TrainingPlanV2.T_Sys_Exercises  JOIN TrainingPlanV2.T_sys_ExerciseType ORDER BY TrainingPlanV2.T_sys_ExerciseType.exerciseType;");
 
 
     }
     else if(currentCat.isEmpty() == false && currentSubCat == "ALL"){
 
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
+        exercisesModel->setQuery("SELECT exerciseID, exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
         qDebug() << "case2 ->";
         qDebug() << "SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;";
 
     }
     else if(currentCat.isEmpty() == false && currentSubCat.isEmpty() == false){
 
-        exercisesModel->setQuery("SELECT exerciseTypeDescr, exerciseSubTypeDescr description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises, T_sys_ExerciseSubType  JOIN T_sys_ExerciseType WHERE T_Sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"'AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
+        exercisesModel->setQuery("SELECT exerciseID, exerciseTypeDescr, exerciseSubTypeDescr description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises, T_sys_ExerciseSubType  JOIN T_sys_ExerciseType WHERE T_Sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"'AND exerciseSubTypeDescr = '"+currentSubCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;");
 
         qDebug() << "case3 ->";
         qDebug() << "SELECT exerciseTypeDescr, description, unit, number, restTimeMIN, estimatedTimeForSeriesMIN, mission, target FROM T_Sys_Exercises  JOIN T_sys_ExerciseType WHERE T_sys_Exercises.exerciseType = T_sys_ExerciseType.exerciseType AND exerciseTypeDescr = '"+currentCat+"' ORDER BY T_sys_ExerciseType.exerciseTypeDescr;";
@@ -43,14 +43,15 @@ void list_exercises::ui_PopulateExTable(){
 
     }
 
-    exercisesModel->setHeaderData(0, Qt::Horizontal, tr("Tipo Esercizio"));
-    exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Descrizione"));
-    exercisesModel->setHeaderData(2, Qt::Horizontal, tr("Unità"));
-    exercisesModel->setHeaderData(3, Qt::Horizontal, tr("Quantità"));
-    exercisesModel->setHeaderData(4, Qt::Horizontal, tr("Tempo di Riposo"));
-    exercisesModel->setHeaderData(5, Qt::Horizontal, tr("Tempo Stimato (MIN)"));
-    exercisesModel->setHeaderData(6, Qt::Horizontal, tr("Mission"));
-    exercisesModel->setHeaderData(7, Qt::Horizontal, tr("Obiettivo"));
+    exercisesUi->LIST_listEx->setColumnHidden(0,true);
+    exercisesModel->setHeaderData(1, Qt::Horizontal, tr("Tipo Esercizio"));
+    exercisesModel->setHeaderData(2, Qt::Horizontal, tr("Descrizione"));
+    exercisesModel->setHeaderData(3, Qt::Horizontal, tr("Unità"));
+    exercisesModel->setHeaderData(4, Qt::Horizontal, tr("Quantità"));
+    exercisesModel->setHeaderData(5, Qt::Horizontal, tr("Tempo di Riposo"));
+    exercisesModel->setHeaderData(6, Qt::Horizontal, tr("Tempo Stimato (MIN)"));
+    exercisesModel->setHeaderData(7, Qt::Horizontal, tr("Mission"));
+    exercisesModel->setHeaderData(8, Qt::Horizontal, tr("Obiettivo"));
     exercisesUi->LIST_listEx->setModel(exercisesModel);
     exercisesUi->LIST_listEx->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     exercisesUi->LIST_listEx->show();
@@ -132,9 +133,18 @@ void list_exercises::tableDblClick(QModelIndex index){
 
     QString cat;
     QString subCat;
+    QString exId;
 
-    cat = index.sibling(row, 0).data().toString();
-    subCat = index.sibling(row, 1).data().toString();
-    qDebug() << cat+" "+subCat;
+    cat = index.sibling(row, 1).data().toString();
+    subCat = index.sibling(row, 2).data().toString();
+    exId = index.sibling(row,0).data().toString();
+
+    qDebug() << cat+" "+subCat+" "+exId;
+
+    editor_exercise editor_exercise(subCat,cat,exId,this);
+    editor_exercise.setModal(true);
+    editor_exercise.exec();
+
+
 
 }

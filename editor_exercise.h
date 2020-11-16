@@ -15,6 +15,7 @@ class editor_exercise : public QDialog
 
 public:
     explicit editor_exercise(QWidget *parent = nullptr);
+    editor_exercise(QString exType, QString exSubType, QString id, QWidget *parent);
     ~editor_exercise();
 
 private slots:
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::editor_exercise *exEditor_ui;
+    void ui_populateEditor(QString exType,QString exSubType, QString exId, QString exDescription, QString groupage, QString unit, QString number, QString resttimemin, QString estimatedtimeforseriesmin, QString mission, QString target, QString exerciseTypeDescr, QString exerciseSubTypeDescr);
     void ui_PopulateComboExCat();
 };
 

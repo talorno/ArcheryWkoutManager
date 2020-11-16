@@ -36,7 +36,7 @@ void MainWindow::on_BTN_wkoutManager_clicked()
 }
 
 void MainWindow::connectDb(){
-    dbCon = QSqlDatabase::addDatabase("QMARIADB");
+    dbCon = QSqlDatabase::addDatabase("QMYSQL");
     dbCon.setHostName("localhost");
     dbCon.setDatabaseName("TrainingPlanV2");
     dbCon.setUserName("archery_manager");

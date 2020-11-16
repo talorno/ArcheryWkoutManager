@@ -23,12 +23,15 @@ private slots:
     void on_BTN_close_clicked();
     void insertAthlete(QString,QString,QString,QString,QDate,QString,int);
 
+    void on_BTN_loadPicture_clicked();
+
 private:
     Ui::editor_athlete *athleteEditorUi;
     void populateClassComboBox();
     void populateDivisionComboBox();
     void pickDivisionComboBox(QString);
     void pickClassComboBox(QString);
+    void loadAthletePic(QString);
 
 
 };
