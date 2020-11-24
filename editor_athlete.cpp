@@ -55,6 +55,12 @@ void editor_athlete::insertAthlete(QString nick, QString name, QString surname,Q
     athlToInsertQRY.exec("INSERT INTO T_cfg_Athletes (athleteNickName, athleteName, athleteSurName, division, bornDate, mailAddress, isActive) VALUES ('"+nick+"','"+name+"','"+surname+"','"+division+"','"+testdate+"','"+mailAddress+"','"+isActive+"');");
                                                                                                                                                            };
 
+void editor_athlete::updateAthlete(QString nick, QString name, QString surname,QString division, QDate bornDate, QString mailAddress,int isActive){
+    QSqlQuery athlToUpdateQRY;
+
+     athlToUpdateQRY.exec("UPDATE T_cfg_Athletes set athleteName = '"+name.txoStdString()+"', athleteSurName = '"+surname+"', division = '"+division.toStdString()+"', bornDate = '"+bornDate+"', mailAddress =  '"+mailAddress.toStdString()+"', isActive = '"+isActive+"' WHERE T_cfg_Athletes.athleteNickName = '"+nick+"'" ;);                                                                                                                               }
+
+
 editor_athlete::~editor_athlete()
 {
     delete athleteEditorUi;
@@ -90,6 +96,7 @@ void editor_athlete::pickClassComboBox(QString bowClass){
 }
 
 void editor_athlete::loadAthletePic(QString nickname){
+    QByteArray imgByteBuffer;
     QString fileName = QFileDialog::getOpenFileName(this,tr("Load Image"), "", tr("Images (*.jpg);;Images (*.png)"));
     if (fileName.isEmpty())return;
        else {
@@ -100,7 +107,8 @@ void editor_athlete::loadAthletePic(QString nickname){
                return;
            }
            else{
-                QByteArray imgByteBuffer = file.readAll(); // non legge una fava, resta vuoto
+                QByteArray imgByteBuffer = file.readAll();
+                file.close();
                 QSqlQuery query;
 
                 query.prepare("UPDATE T_cfg_Athletes(athleteImage) VALUES (:imgByteBuffer) WHERE athleteNickName="+nickname+"");

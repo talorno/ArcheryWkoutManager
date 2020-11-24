@@ -22,6 +22,7 @@ public:
 private slots:
     void on_BTN_close_clicked();
     void insertAthlete(QString,QString,QString,QString,QDate,QString,int);
+    void updateAthlete(QString,QString,QString,QString,QDate,QString,int);
 
     void on_BTN_loadPicture_clicked();
 

@@ -25,15 +25,18 @@ class Ui_workout_manager
 public:
     QWidget *gridLayoutWidget;
     QGridLayout *LYT_main;
-    QListView *LIST_wkouts_meso;
-    QListView *LIST_wkouts_athletes;
-    QListView *LIST_wkouts_macro;
     QVBoxLayout *LYT_btn_macro;
     QPushButton *BTN_macro_new;
     QPushButton *BTN_macro_del;
     QVBoxLayout *LYT_btn_meso;
     QPushButton *BTN_meso_new;
     QPushButton *BTN_meso_del;
+    QListView *LIST_wkouts_meso;
+    QListView *LIST_wkouts_athletes;
+    QVBoxLayout *LYT_btn_plan;
+    QPushButton *BTN_meso_new_2;
+    QPushButton *BTN_plan_new;
+    QListView *LIST_wkouts_macro;
 
     void setupUi(QDialog *workout_manager)
     {
@@ -54,21 +57,6 @@ public:
         LYT_main = new QGridLayout(gridLayoutWidget);
         LYT_main->setObjectName(QString::fromUtf8("LYT_main"));
         LYT_main->setContentsMargins(0, 0, 0, 0);
-        LIST_wkouts_meso = new QListView(gridLayoutWidget);
-        LIST_wkouts_meso->setObjectName(QString::fromUtf8("LIST_wkouts_meso"));
-
-        LYT_main->addWidget(LIST_wkouts_meso, 0, 2, 1, 1);
-
-        LIST_wkouts_athletes = new QListView(gridLayoutWidget);
-        LIST_wkouts_athletes->setObjectName(QString::fromUtf8("LIST_wkouts_athletes"));
-
-        LYT_main->addWidget(LIST_wkouts_athletes, 0, 0, 1, 1);
-
-        LIST_wkouts_macro = new QListView(gridLayoutWidget);
-        LIST_wkouts_macro->setObjectName(QString::fromUtf8("LIST_wkouts_macro"));
-
-        LYT_main->addWidget(LIST_wkouts_macro, 0, 1, 1, 1);
-
         LYT_btn_macro = new QVBoxLayout();
         LYT_btn_macro->setObjectName(QString::fromUtf8("LYT_btn_macro"));
         BTN_macro_new = new QPushButton(gridLayoutWidget);
@@ -82,7 +70,7 @@ public:
         LYT_btn_macro->addWidget(BTN_macro_del);
 
 
-        LYT_main->addLayout(LYT_btn_macro, 1, 2, 1, 1);
+        LYT_main->addLayout(LYT_btn_macro, 2, 2, 1, 1);
 
         LYT_btn_meso = new QVBoxLayout();
         LYT_btn_meso->setObjectName(QString::fromUtf8("LYT_btn_meso"));
@@ -97,7 +85,37 @@ public:
         LYT_btn_meso->addWidget(BTN_meso_del);
 
 
-        LYT_main->addLayout(LYT_btn_meso, 1, 1, 1, 1);
+        LYT_main->addLayout(LYT_btn_meso, 2, 1, 1, 1);
+
+        LIST_wkouts_meso = new QListView(gridLayoutWidget);
+        LIST_wkouts_meso->setObjectName(QString::fromUtf8("LIST_wkouts_meso"));
+
+        LYT_main->addWidget(LIST_wkouts_meso, 0, 2, 1, 1);
+
+        LIST_wkouts_athletes = new QListView(gridLayoutWidget);
+        LIST_wkouts_athletes->setObjectName(QString::fromUtf8("LIST_wkouts_athletes"));
+
+        LYT_main->addWidget(LIST_wkouts_athletes, 0, 0, 1, 1);
+
+        LYT_btn_plan = new QVBoxLayout();
+        LYT_btn_plan->setObjectName(QString::fromUtf8("LYT_btn_plan"));
+        BTN_meso_new_2 = new QPushButton(gridLayoutWidget);
+        BTN_meso_new_2->setObjectName(QString::fromUtf8("BTN_meso_new_2"));
+
+        LYT_btn_plan->addWidget(BTN_meso_new_2);
+
+        BTN_plan_new = new QPushButton(gridLayoutWidget);
+        BTN_plan_new->setObjectName(QString::fromUtf8("BTN_plan_new"));
+
+        LYT_btn_plan->addWidget(BTN_plan_new);
+
+
+        LYT_main->addLayout(LYT_btn_plan, 2, 0, 1, 1);
+
+        LIST_wkouts_macro = new QListView(gridLayoutWidget);
+        LIST_wkouts_macro->setObjectName(QString::fromUtf8("LIST_wkouts_macro"));
+
+        LYT_main->addWidget(LIST_wkouts_macro, 0, 1, 1, 1);
 
 
         retranslateUi(workout_manager);
@@ -112,6 +130,8 @@ public:
         BTN_macro_del->setText(QCoreApplication::translate("workout_manager", "Cancella MacroCiclo", nullptr));
         BTN_meso_new->setText(QCoreApplication::translate("workout_manager", "Nuovo MesoCiclo", nullptr));
         BTN_meso_del->setText(QCoreApplication::translate("workout_manager", "Cancella MesoCiclo", nullptr));
+        BTN_meso_new_2->setText(QCoreApplication::translate("workout_manager", "Nuovo Piano D'Allenamento", nullptr));
+        BTN_plan_new->setText(QCoreApplication::translate("workout_manager", "Cancella Piano Di Allenamento", nullptr));
     } // retranslateUi
 
 };

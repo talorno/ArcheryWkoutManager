@@ -106,7 +106,7 @@ public:
         TBL_exQty->setGeometry(QRect(680, 200, 561, 401));
         BTN_closeEditor = new QPushButton(GROUPBOX_main);
         BTN_closeEditor->setObjectName(QString::fromUtf8("BTN_closeEditor"));
-        BTN_closeEditor->setGeometry(QRect(1074, 742, 131, 31));
+        BTN_closeEditor->setGeometry(QRect(1034, 742, 171, 31));
         QFont font1;
         font1.setPointSize(11);
         BTN_closeEditor->setFont(font1);
